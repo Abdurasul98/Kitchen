@@ -1,3 +1,4 @@
+from apps.views.views import show_products
 from core.file_manager import FileManager
 from core.utils import get_next_id
 

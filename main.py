@@ -1,4 +1,7 @@
 from apps.auth.views import login, register, logout
+from apps.views.admin_views import add_products, delete_products, show_orders
+from apps.views.user_views import add_orders, show_my_orders
+from apps.views.views import show_products
 
 
 def auth_menu():
@@ -41,13 +44,13 @@ def admin_menu():
     """)
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        add_products()
     elif choice == "2":
-        pass
+        delete_products()
     elif choice == "3":
-        pass
+        show_products()
     elif choice == "4":
-        pass
+        show_orders()
     elif choice == "5":
         logout()
         return auth_menu()
@@ -65,11 +68,11 @@ def user_menu():
     """)
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        show_products()
     elif choice == "2":
-        pass
+        add_orders()
     elif choice == "3":
-        pass
+        show_my_orders()
     elif choice == "4":
         logout()
         return auth_menu()
