@@ -7,7 +7,6 @@ def show_products():
         print(f"ID: {product[0]} Product name: {product[1]} Price: {product[2]} Quantity: {product[3]}")
 
 
-
 def calculate():
     orders = FileManager("orders").read()
     products = FileManager("products").read()
