@@ -2,7 +2,8 @@ from datetime import datetime
 
 from core.file_manager import FileManager
 from core.utils import get_next_id
-from apps.views.views import show_products
+from apps.views.views import show_products, calculate
+
 
 def time_dec(func):
     def wrapper(*args, **kwargs):
@@ -26,7 +27,7 @@ def add_orders():
     phone = input("Enter phone number: ")
     time_now = datetime.now()
     created_at = time_now.strftime("%H:%M")
-
+    calculate()
     FileManager("orders").append(row=[product_id, full_name, product_name, quantity, phone, created_at])
     print("New order is added")
 

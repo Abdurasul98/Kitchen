@@ -15,6 +15,7 @@ def add_products():
 
 
 def delete_products():
+    show_products()
     product_id = input("Product id: ")
     file = FileManager("products")
     products = file.read()
