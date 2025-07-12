@@ -78,7 +78,7 @@ def user_menu():
         return auth_menu()
     else:
         print("Invalid choice")
-    return admin_menu()
+    return user_menu()
 
 
 if __name__ == "__main__":
