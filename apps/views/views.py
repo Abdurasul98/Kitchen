@@ -10,5 +10,16 @@ def show_products():
 def calculate():
     orders = FileManager("orders").read()
     products = FileManager("products").read()
-    result = products[3] - orders[3]
-    FileManager("products").append(result)
+
+    for product in products:
+        product_name = product[1]
+        product_qty = int(product[3])
+
+        for order in orders:
+            if order[2] == product_name:
+                ordered_qty = int(order[3])
+                product_qty -= ordered_qty
+
+        product[3] = str(product_qty)
+
+    FileManager("products").writerows(products)
