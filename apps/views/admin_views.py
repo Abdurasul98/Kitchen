@@ -6,13 +6,12 @@ from core.utils import get_next_id
 def add_products():
     product_id = get_next_id("products")
     product = input("Product name: ")
-    price = input("Price: ")
-    quantity = input("Quantity: ")
+    price = int(input("Price: "))
+    quantity = int(input("Quantity: "))
     data = [product_id,product,price,quantity]
 
     FileManager("products").append(data)
     print("Added product")
-
 
 def delete_products():
     show_products()
@@ -31,9 +30,9 @@ def delete_products():
 
     if lampochka:
         file.writerows(new_products)
-        print("Deleted order")
+        print("Deleted product")
     else:
-        print("Not found this order")
+        print("Not found this product")
 
 
 def show_orders():
