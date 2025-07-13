@@ -7,19 +7,17 @@ def show_products():
         print(f"ID: {product[0]} Product name: {product[1]} Price: {product[2]} Quantity: {product[3]}")
 
 
-def calculate():
-    orders = FileManager("orders").read()
+def calculate(product_name, order_qty):
     products = FileManager("products").read()
+    updated_products = []
 
     for product in products:
-        product_name = product[1]
-        product_qty = int(product[3])
+        if product[1] == product_name:
+            current_qty = int(product[3])
+            new_qty = current_qty - int(order_qty)
+            if new_qty < 0:
+                new_qty = 0
+            product[3] = str(new_qty)
+        updated_products.append(product)
 
-        for order in orders:
-            if order[2] == product_name:
-                ordered_qty = int(order[3])
-                product_qty -= ordered_qty
-
-        product[3] = str(product_qty)
-
-    FileManager("products").writerows(products)
+    FileManager("products").writerows(updated_products)
