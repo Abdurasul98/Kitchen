@@ -9,7 +9,7 @@ def time_dec(func):
     def wrapper(*args, **kwargs):
         time_now = datetime.now()
         hour = time_now.hour
-        if hour < 22:
+        if hour < 12:
             print("Zakaz berishingiz mumkin")
             return func(*args, **kwargs)
         else:
@@ -25,11 +25,13 @@ def add_orders():
     product_name = input("Enter product name: ")
     quantity = int(input("Enter quantity: "))
     phone = input("Enter phone number: ")
+
     time_now = datetime.now()
     created_at = time_now.strftime("%H:%M")
-    calculate()
+
     FileManager("orders").append(row=[product_id, full_name, product_name, quantity, phone, created_at])
     print("New order is added")
+    calculate()
 
 
 def show_my_orders():
